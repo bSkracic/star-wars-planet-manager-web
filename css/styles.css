@@ -1,0 +1,17 @@
+.basic-heading {
+    text-align: center;
+    font-size: 50px;
+    color: darkblue;
+}
+
+.edit-text-alt {
+    margin: auto;
+    width: 25%;
+}
+
+.default-label {
+    display: inline-block;
+    text-align: right;
+    position: relative;
+    left: 37.5%;
+}
