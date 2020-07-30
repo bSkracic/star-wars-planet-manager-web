@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="js/planet-view-script.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="page-header">
+        <h1 id="p-name" style="text-align: center; font-size: 50px; color: darkblue;">Star Wars Planet Manager</h1>
+    </div>
+    <div id="status-alert">
+
+    </div>
+    <div id="container">
+        <div id="details-container" class="panel panel-primary" style="width: 99%; margin: auto;">
+            <div class="panel-heading clearfix">
+                <h1 class="panel-title pull-left">Details</h1>
+                <button type="button" id="edit-planet" class="btn-default pull-right" data-toggle="modal" data-target="#edit-planet-modal">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <div class="panel col-md-3">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Image:</h4>
+                        </div>
+                        <div class="panel-body">
+                            <img style="width: 100%;" id="planet-image" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Name:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <label id="planet-name">Loading...</label>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Region:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <label id="planet-region">Loading...</label>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Type:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <label id="planet-type">Loading...</label>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Government:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img id="gov-icon" src="#" height="50" width="50" />
+                        </div>
+                        <div class="col-md-3">
+                            <label id="planet-government">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="governor-container" class="panel panel-primary" style="width: 99%; margin: auto;">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">Governor</h3>
+                <button type="button" id="edit-governor" class="btn-default pull-right" data-toggle="modal" data-target="#edit-governor-modal">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <div class="panel col-md-3">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Image:</h4>
+                        </div>
+                        <div class="panel-body">
+                            <img style="max-width: 600px; width: 100%;" id="governor-image" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Name:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <label id="governor-name">Loading...</label>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Surname:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <label id="governor-surname">Loading...</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="army-container" class="panel panel-primary" style="width: 99%; margin: auto;" data-toggle="modal" data-target="#edit-army-modal">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">Army</h3>
+                <button type="button" id="edit-army" class="btn-default pull-right">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">B1:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img src="res/army-icons/model_B1-playstore.png" height="50" width="50" />
+                        </div>
+                        <div class="col-md-2">
+                            <label id="B1">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">B2:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img src="res/army-icons/model_B2-playstore.png" height="50" width="50" />
+                        </div>
+                        <div class="col-md-2">
+                            <label id="B2">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">B3:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img src="res/army-icons/model_B3-playstore.png" height="50" width="50" />
+                        </div>
+                        <div class="col-md-2">
+                            <label id="B3">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">BX:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img src="res/army-icons/model_BX-playstore.png" height="50" width="50" />
+                        </div>
+                        <div class="col-md-2">
+                            <label id="BX">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">BL:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img src="res/army-icons/model_BL-playstore.png" height="50" width="50" />
+                        </div>
+                        <div class="col-md-2">
+                            <label id="BL">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">D1S1:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img src="res/army-icons/model_D1S1-playstore.png" height="50" width="50" />
+                        </div>
+                        <div class="col-md-2">
+                            <label id="D1S1">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">HKB3:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img src="res/army-icons/model_HKB3-playstore.png" height="50" width="50" />
+                        </div>
+                        <div class="col-md-2">
+                            <label id="HKB3">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">IG110:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img src="res/army-icons/model_IG110-playstore.png" height="50" width="50" />
+                        </div>
+                        <div class="col-md-2">
+                            <label id="IG110">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">OG9:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img src="res/army-icons/model_OG9-playstore.png" height="50" width="50" />
+                        </div>
+                        <div class="col-md-2">
+                            <label id="OG9">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel col-md-3">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">T4:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <img src="res/army-icons/model_T4-playstore.png" height="50" width="50" />
+                        </div>
+                        <div class="col-md-2">
+                            <label id="T4">Loading...</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Edit planet-->
+    <div id="edit-planet-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit planet details</h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="pull-left">
+                        <div>
+                            <label for="edit-planet-image">Image: </label>
+                            <br />
+                            <label for="edit-planet-image">Supported formats: JPG, JPEG, PNG </label>
+                            <br />
+                            <input id="edit-planet-image" type="file" />
+                            <br />
+                            <label for="edit-planet-name">Name: </label>
+                            <br />
+                            <input id="edit-planet-name" type="text" />
+                            <br />
+                            <label for="edit-planet-type">Type: </label>
+                            <br />
+                            <input id="edit-planet-type" type="text" />
+                            <br />
+                        </div>
+                        <div>
+                            <label for="regions-select">Region: </label>
+                            <br />
+                            <select id='regions-select'>
+                                <!--Dynamically added-->
+                            </select>
+                        </div>
+                        <div>
+                            <label for="government-select">Government:</label>
+                            <br />
+                            <select id='government-select'>
+                                <option value="Confederates">Confederates</option>
+                                <option value="Galactic Republic">Galactic Republic</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <img id="temp-planet-image" src="res/blank_planet.png" style="max-width: 100px; max-height: 100px;" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="change-planet" type="button" class="btn btn-primary pull-right" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Edit governor-->
+    <div id="edit-governor-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit governor details</h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="pull-left">
+                        <div>
+                            <label for="edit-governor-image">Image: </label>
+                            <br />
+                            <label for="edit-governor-image">Supported formats: JPG, JPEG, PNG </label>
+                            <br />
+                            <input id="edit-governor-image" type="file" />
+                            <br />
+                            <label for="edit-governor-name">Name: </label>
+                            <br />
+                            <input id="edit-governor-name" type="text" />
+                            <br />
+                            <label for="edit-governor-surname">Surname: </label>
+                            <br />
+                            <input id="edit-governor-surname" type="text" />
+                            <br />
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <img id="temp-governor-image" src="res/blank_planet.png" style="max-width: 100px; max-height: 100px;" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="change-governor" type="button" class="btn btn-primary pull-right" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Edit army-->
+    <div id="edit-army-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit army details</h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="pull-left">
+                        <div>
+                            <img src="res/army-icons/model_B1-playstore.png" height="50" width="50" />
+                            <label for="edit-B1">B1:</label>
+                            <input id="edit-B1" type="number" />
+                        </div>
+                        <div>
+                            <img src="res/army-icons/model_B2-playstore.png" height="50" width="50" />
+                            <label for="edit-B2">B2:</label>
+                            <input id="edit-B2" type="number" />
+                        </div>
+                        <div>
+                            <img src="res/army-icons/model_B3-playstore.png" height="50" width="50" />
+                            <label for="edit-B3">B3:</label>
+                            <input id="edit-B3" type="number" />
+                        </div>
+                        <div>
+                            <img src="res/army-icons/model_BX-playstore.png" height="50" width="50" />
+                            <label for="edit-BX">BX:</label>
+                            <input id="edit-BX" type="number" />
+                        </div>
+                        <div>
+                            <img src="res/army-icons/model_BL-playstore.png" height="50" width="50" />
+                            <label for="edit-BL">BL:</label>
+                            <input id="edit-BL" type="number" />
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div>
+                            <img src="res/army-icons/model_D1S1-playstore.png" height="50" width="50" />
+                            <label for="edit-D1S1">D1S1:</label>
+                            <input id="edit-D1S1" type="number" />
+                        </div>
+                        <div>
+                            <img src="res/army-icons/model_HKB3-playstore.png" height="50" width="50" />
+                            <label for="edit-HKB3">HKB3:</label>
+                            <input id="edit-HKB3" type="number" />
+                        </div>
+                        <div>
+                            <img src="res/army-icons/model_IG110-playstore.png" height="50" width="50" />
+                            <label for="edit-IG110">IG110:</label>
+                            <input id="edit-IG110" type="number" />
+                        </div>
+                        <div>
+                            <img src="res/army-icons/model_OG9-playstore.png" height="50" width="50" />
+                            <label for="edit-OG9">OG9:</label>
+                            <input id="edit-OG9" type="number" />
+                        </div>
+                        <div>
+                            <img src="res/army-icons/model_T4-playstore.png" height="50" width="50" />
+                            <label for="edit-T4">T4:</label>
+                            <input id="edit-T4" type="number" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="change-army" type="button" class="btn btn-primary pull-right" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
