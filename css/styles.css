@@ -4,14 +4,21 @@
     color: darkblue;
 }
 
-.edit-text-alt {
-    margin: auto;
-    width: 25%;
-}
-
-.default-label {
+.planet-input-label {
     display: inline-block;
     text-align: right;
     position: relative;
-    left: 37.5%;
+    left: 32.5%;
+}   
+
+.results-default-style {
+    margin: auto;
+    width:50%;
+    padding-top: 2%;
+}
+
+.planet-search-style {
+    margin: auto;
+    width: 30%;
+    left: 50%;
 }

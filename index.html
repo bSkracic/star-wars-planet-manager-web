@@ -1,25 +1,40 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="utf-8">
+    <title>SW Planet Manager</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-
-
+    <script src="js/planet-index-script.js" type="text/javascript"></script>
+</head> 
 <body>
     <h1 class="basic-heading">Star Wars Planet Manager</h1>
-
-    <div id="planetSearch">
-        <label for="planetSearch" class="default-label">Search planet by name:</label>
-        <input id="planet-searchterm" type="text" class="form-control edit-text-alt">
+    <div id="planet-search" class="planet-search-style">
+        <label for="planet-searchterm">Search planet by name:</label>
+        <input id="planet-searchterm" type="text" class="form-control" placeholder="Enter planet name...">
+        <button id="search-button" class="btn btn-primary" style="float:right;">Search</button>
     </div>
-
-    <button id="search-button" class="btn-primary" style="float: right;">Click</button>
-
-    <script src="js/planet-index-script.js" type="text/javascript"></script>
+    <div id="filter-search" class="col-md-3">   
+        <h4 style="font-weight: bold;">Filter results:</h4>
+        <p>----------------</p>
+        <div id="gov-filter-search">
+            <label>Government: </label><br />
+            <input type="checkbox" id="Con"/>
+            <label for="Con">Confederates</label><br />
+            <input type="checkbox" id="Gal"/>
+            <label for="Gal">Galactic Republic</label><br />
+        </div>
+        <p>----------------</p>
+        <div id="reg-filter-search">
+            <label>Regions: </label><br/>
+            <!--dynamically added-->
+        </div>
+    </div>
+    <div id="results" class="list-group results-default-style col-md-6">
+        <!--dynamically added-->
+        <p id="temp">Loading...</p>
+    </div>
 </body>
-
 </html>
