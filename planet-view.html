@@ -265,7 +265,8 @@
                             <label for="edit-planet-image">Supported formats: JPG, JPEG, PNG </label>
                             <br />
                             <input id="edit-planet-image" type="file" />
-                            <br />
+                            <input type="button" id="remove-planet-image" value="Remove"/>
+                            <br>
                             <label for="edit-planet-name">Name: </label>
                             <br />
                             <input id="edit-planet-name" type="text" />
@@ -278,9 +279,7 @@
                         <div>
                             <label for="regions-select">Region: </label>
                             <br />
-                            <select id='regions-select'>
-                                <!--Dynamically added-->
-                            </select>
+                            <select id='regions-select'></select>
                         </div>
                         <div>
                             <label for="government-select">Government:</label>
@@ -318,6 +317,7 @@
                             <label for="edit-governor-image">Supported formats: JPG, JPEG, PNG </label>
                             <br />
                             <input id="edit-governor-image" type="file" />
+                            <input type="button" id="remove-governor-image" value="Remove"/>
                             <br />
                             <label for="edit-governor-name">Name: </label>
                             <br />

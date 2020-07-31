@@ -30,10 +30,6 @@ function onDocumentReady() {
 
         getPlanets();
 
-        console.log("Search term: " + searchterm); //DEBUG
-        console.log("Region requirment: " + reqReg); //DEBUG
-        console.log("Government requirment: " + reqGov); //DEBUG
-
     });
 
     window.onbeforeunload = function () {

@@ -158,13 +158,19 @@ function startPlanetModal() {
     });
     $('#edit-planet-name').val(planet.Name);
     $('#edit-planet-type').val(planet.Type);
-    regions.forEach((item) => {
-        $('#regions-select').append(
-            $('<option></option>').val(item.id).html(item.name)
-        );
-    });
+    if ($('#regions-select').children().length === 0) {
+        regions.forEach((item) => {
+            $('#regions-select').append(
+                $('<option></option>').val(item.id).html(item.name)
+            );
+        });
+    }
     $('#regions-select').val(planet.RegionID);
     $('#government-select').val(planet.Government);
+
+    $('#remove-planet-image').bind('click', function () {
+        $('#temp-planet-image').attr('src', 'res/blank_planet.png');
+    });
 
     $('#change-planet').bind('click', function (event) { 
         var body = constructPlanetBody();
@@ -177,8 +183,6 @@ function startPlanetModal() {
             data: body,
             success: function (data) {
                 var newGov = $('#government-select').val();
-                console.log('New gov: ' + newGov); //DEBUG
-                console.log('Old gov: ' + previousGov); //DEBUG
                 checkGovernment(newGov);
             },
             error: function (data) {
@@ -199,7 +203,6 @@ function constructPlanetBody() {
     } else {
         imageString = image.replace(/data:image\/(png|jpg|jpeg);base64,/, '');
     }
-    console.log(imageString); //DEBUG
     var planetDTO = {
         IDPlanet: planet.IDPlanet,
         Name: $('#edit-planet-name').val(),
@@ -211,6 +214,7 @@ function constructPlanetBody() {
     return JSON.stringify(planetDTO);
 }
 
+//used to check if api needs to create/delete army and governor tables
 function checkGovernment(newGov) {
     if (newGov != previousGov) {
         if (newGov === 'Confederates') {
@@ -297,6 +301,7 @@ function checkGovernment(newGov) {
             });
         }
     } else {
+        $('#status-alert').empty();
         $('#status-alert').append(
             '<div class="alert alert-success" role="alert">' +
             'Changes saved succesfully.' +
@@ -318,6 +323,10 @@ function startGovernorModal() {
     });
     $('#edit-governor-name').val(governor.Name);
     $('#edit-governor-surname').val(governor.Surname);
+
+    $('#remove-governor-image').bind('click', function () {
+        $('#temp-governor-image').attr('src', 'res/blank_planet.png');
+    });
 
     $('#change-governor').bind('click', function (event) {
         var image = $('#temp-governor-image').attr('src').toString();
