@@ -98,6 +98,7 @@ function sendGET(id) {
 
 function populateContainers() {
     $('#planet-name').html(planet.Name);
+    $('#title').html(planet.Name)
     $('#planet-region').html(planet.Region);
     $('#planet-type').html(planet.Type);
     $('#planet-government').html(planet.Government);
